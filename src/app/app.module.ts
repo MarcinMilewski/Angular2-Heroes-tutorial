@@ -10,20 +10,22 @@ import {AppComponent} from "./app.component";
 import {routing} from "./app.routing";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import { InMemoryWebApiModule } from 'angular2-in-memory-web-api';
+import { InMemoryDataService }  from './in-memory-data.service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroDetailComponent,
       HeroesComponent,
-      DashboardComponent
+      DashboardComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
       routing,
-      // InMemoryWebApiModule.forRoot(InMemoryDataService)
+      InMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
   providers: [HeroService],
   bootstrap: [AppComponent]
