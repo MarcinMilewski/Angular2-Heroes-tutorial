@@ -10,8 +10,7 @@ import { OnInit} from '@angular/core';
   providers: [HeroService]
 })
 
-export class AppComponent implements OnInit{
-  title = 'Tour of Heroes';
+export class HeroesComponent implements OnInit{
   heroes: Hero[];
   selectedHero: Hero;
 
