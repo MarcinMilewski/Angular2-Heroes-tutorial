@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core'
-import {HEROES} from "../mock-heroes";
 import {Hero} from "../hero";
 import {Headers, Http} from "@angular/http";
 import 'rxjs/add/operator/toPromise';
@@ -14,6 +13,7 @@ export class HeroService{
         return this.http.get(this.heroesUrl)
             .toPromise()
             .then(response => response.json().data as Hero[])
+            .catch(this.handleError);
     }
 
     getHeroesSlowly(): Promise<Hero[]> {
@@ -25,5 +25,10 @@ export class HeroService{
     getHero(id: number) : Promise<Hero> {
         return this.getHeroes().then(heroes => heroes.find(hero => hero.id === id ));
 
+    }
+
+    private handleError(error: any): Promise<any> {
+        console.error('An error occured', error);
+        return Promise.reject(error.message || error);
     }
 }
